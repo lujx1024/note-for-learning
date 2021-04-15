@@ -1,5 +1,5 @@
 ---
-title: 2021-04-13 CentOS 安装httpd服务 
+title: CentOS 安装httpd服务
 tags: 新建,模板,小书匠
 renderNumberedHeading: true
 grammar_cjkRuby: true
