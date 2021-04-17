@@ -20,7 +20,7 @@ grammar_cjkRuby: true
 Win10系统安装Docker前，需要启用Hyper-V windows功能。点击win徽标进入设置，搜索"启用或关闭windows功能"，将Hyper-V勾选即可。启用后需要重启。
 
 ### 安装docker
-直接双击exe安装文件即可。安装完成后，可修改images保存地址，由于默认保存在c盘，会占用有限的空间，可修改地址到其他路径。右击任务栏鲸鱼docker图标鲸鱼![](./images/1617385881277.png)-->settings-->Resource-->Advanced-->Disk image location,选择一个新路径后，点击 Apply 即可。
+直接双击exe安装文件即可。安装完成后，可修改images保存地址，由于默认保存在c盘，会占用有限的空间，可修改地址到其他路径。右击任务栏鲸鱼docker图标![鲸鱼](./images/1618624014323.png)-->settings-->Resource-->Advanced-->Disk image location,选择一个新路径后，点击 Apply 即可。
 
 ### docker 第一次运行指令
 
