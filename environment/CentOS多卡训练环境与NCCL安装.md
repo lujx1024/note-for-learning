@@ -1,6 +1,6 @@
 ---
-title: PaddleDetection多卡训练与NCCL安装
-tags: PaddleDetection,多GPU训练,NCCL
+title: CentOS多卡训练环境与NCCL安装
+tags: CentOS,多GPU训练,NCCL
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
@@ -41,6 +41,8 @@ grammar_cjkRuby: true
 
 ## 使用RPM卸载
  此方法适用于使用以`.rpm`为扩展名的安装包安装的依赖库：
+ 
+ > **Note: you can skip this chapter if this is your first installation**
  
   - 首先检查已安装的依赖库的包名
 	```

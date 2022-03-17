@@ -1,5 +1,5 @@
 ---
-title: Linux系统挂载NTFS格式的硬盘或U盘
+title: CentOS系统挂载NTFS格式的硬盘或U盘
 tags: linux,NTFS,挂载
 renderNumberedHeading: true
 grammar_cjkRuby: true
