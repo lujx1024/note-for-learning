@@ -1,6 +1,6 @@
 ---
 title: CentOS升级gcc版本
-tags: 新建,模板,小书匠
+tags: CentOS,GCC,版本升级
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
@@ -11,7 +11,7 @@ grammar_cjkRuby: true
 # 环境准备
 ## 安装依赖
 首先需要安装包括低版本gcc在内的所有依赖库，提供源码编译等支持
-`yum install glibc-headers gcc-c++  gcc gmp  gmp-devel  mpfr  mpfr-devel  libmpc  libmpc-devel`
+`yum install -y glibc-headers gcc-c++  gcc gmp  gmp-devel  mpfr  mpfr-devel  libmpc  libmpc-devel`
 
 ## 源码下载
 
@@ -24,7 +24,7 @@ grammar_cjkRuby: true
 
 ```
 tar zxvf gcc-7.5.0.tar.gz
-cd cc-7.5.0
+cd gcc-7.5.0
 ```
 
 ## 运行依赖安装脚本
@@ -62,7 +62,7 @@ cd build
 上述make和make install如果没有报错，说明gcc 7.5.0已经安装成功，剩下的工作就是处理环境变量。
 
 ## 移除旧版本gcc
-`yum remove gcc`
+`yum remove gcc -y`
 
 ## 创建新版本gcc软连接
 
