@@ -34,7 +34,7 @@ curl -O https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
 [root@localhost ~]#  yum-builddep python
 # 进入文件夹
 [root@localhost ~]# cd Python3.6.8
-# 运行配置，默认安装位置为/usr/local/bin/,改变使用–prefix=/alternative/path，建议使用默认配置
+# 运行配置，默认安装位置为/usr/local/bin/,改变使用--prefix=/alternative/path，建议使用默认配置
 [root@localhost ~]# ./configure
 # 编译  
 [root@localhost ~]#  make
