@@ -92,7 +92,7 @@ docker rmi {image-name}
 -  step 3 修改 /etc/docker/daemon.json ,添加以下配置
 	```
 	{
-		"graph":"/docker/lib/docker"
+		"graph":"/home/docker/lib/docker"
 	}
 
 	```
