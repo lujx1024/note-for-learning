@@ -42,7 +42,21 @@ filter through PROG (must accept -d)
 打包文件夹为压缩文件时，使用如下指令:
 `tar -cf -  list of files and folders| xz -9 -T0 >| archive.tar.xz`
 
+`tar -cf -  list of files and folders| pigz --fast  --processes n >| archive.tar.xz`
+
 > 可通过执行对应程序的`help`指令了解参数具体含义，如 `xz --help`可查询`-9` `-T0`等参数分别代表使用`压缩级别9`和`全部的CPU线程资源`
 
 
+```
+tar -cf - software_package | pigz -p 48 --fast >| software_package.tgz
+
+tar -cvf - dir1 dir2 dir3 | pigz -p 8 > output.tgz
+
+pigz -p 8 -d output.tgz
+
+-b	更改block size的大小
+-p	设置线程数
+-S	使用后缀.sss而不是.gz(用于压缩)
+-d	或unpigz可以将压缩文件恢复为原始文件
+```
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
