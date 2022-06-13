@@ -75,7 +75,7 @@ ln -sv /usr/local/gcc-7.5.0/bin/g++ /usr/bin/g++
 在`/etc/profile`中添加`LD_LIBRARY_PATH`环境变量,如下代码：
 ```
 # gcc
-LD_LIBRARY_PATH=/usr/local/gcc-9.3.0/lib
+export LD_LIBRARY_PATH=/usr/local/gcc-7.5.0/lib:$LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH
 ```
 执行如下指令重新加载配置 :
