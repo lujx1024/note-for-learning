@@ -184,4 +184,20 @@ export ALL_PROXY=socks5://127.0.0.1:10808
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
 	```
+	
+3. wget设置代理
+	```
+	vim ~/.wgetrc
+
+	复制
+	#You can set the default proxies for Wget to use for http, https, and ftp.
+	# They will override the value in the environment.
+	https_proxy = http://127.0.0.1:10809/
+	http_proxy = http://127.0.0.1:10809/
+	ftp_proxy = http://127.0.0.1:10809/
+
+	# If you do not want to use proxy at all, set this to off.
+	use_proxy = on
+	```
+
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
