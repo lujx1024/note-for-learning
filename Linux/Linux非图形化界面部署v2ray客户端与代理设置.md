@@ -200,4 +200,6 @@ export ALL_PROXY=socks5://127.0.0.1:10808
 	use_proxy = on
 	```
 
+> 检查代理状态 : curl cip.cc
+
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
