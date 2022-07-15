@@ -31,28 +31,30 @@ grammar_cjkRuby: true
 
 ## 环境预处理
 
-1. 禁用Nouveau驱动
-	```
-	# 新增配置文件
-	[root@localhost ~]# vim /etc/modprobe.d/blacklist-nouveau.conf
+1. 禁用nouveau
+```
+1)把驱动加入黑名单中: /etc/modprobe.d/blacklist.conf 在后面加入：
+ 
+    blacklist nouveau
+ 
+    options nouveau modeset=0
+ 
+2) 使用 dracut重新建立 initramfs nouveau 并且备份 initramfs nouveau image镜像
+ 
+    mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak
+ 
+3) 重新建立新的 the initramfs file
+ 
+    dracut -v /boot/initramfs-$(uname -r).img $(uname -r)
+ 
+4)重启，检查nouveau driver确保没有被加载！
+ 
+    reboot
+ 
+    lsmod | grep nouveau
+```
 
-	# 添加下面两行
-	blacklist nouveau
-	options nouveau modeset=0
-
-	保存并退出
-
-	# 重新生成 kernel initramfs
-	[root@localhost ~]# dracut --force
-	```
-2.  重做initramfs镜像
-	```
-	[root@localhost ~]# cp /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak
-	[root@localhost ~]# dracut /boot/initramfs-$(uname -r).img $(uname -r)
-	# 这一步可不执行
-	[root@localhost ~]# rm /boot/initramfs-$(uname -r).img.bak ;
-	```
-3.  修改终端模式并重启验证
+2.  修改终端模式并重启验证
 
 	```
 	# 改为终端模式，runlevel改为3
@@ -65,7 +67,7 @@ grammar_cjkRuby: true
 	[root@localhost ~]# lsmod | grep nouveau
 	```
 
-4. 查看系统内核版本
+3. 查看系统内核版本
 	```
 	# 查看内核版本
 	[root@localhost ~]# uname -r
@@ -83,7 +85,7 @@ grammar_cjkRuby: true
 	/dev/sda1                200M   12M  189M   6% /boot/efi
 	/dev/mapper/centos-home  876G   14G  863G   2% /home
 	```
-5. 安装环境组件与依赖
+4. 安装环境组件与依赖
 	```
 	# 安装组件
 	[root@localhost ~]# yum install gcc kernel-devel kernel-headers
@@ -94,32 +96,29 @@ grammar_cjkRuby: true
 # 安装驱动
 1. 修改文件执行权限
    `# 修改文件权限
-[root@localhost ~]# chmod +x NVIDIA-Linux-x86_64-450.80.02.run
-
-`
+	[root@localhost ~]# chmod +x NVIDIA-Linux-x86_64-450.80.02.run
+	`
 2. 查看内核
-  ```
-   
-# --kernel-source-path使用本机地址，可在/usr/src/kernels 查看后明确本地地址
-ls -al /usr/src/kernels
-
-```
+	  ```   
+	# --kernel-source-path使用本机地址，可在/usr/src/kernels 查看后明确本地地址
+	ls -al /usr/src/kernels
+	```
 3. 执行安装
- ```
- # 安装
-./NVIDIA-Linux-x86_64-450.80.02.run --kernel-source-path=/usr/src/kernels/3.10.0-1160.6.1.el7.x86_64  -k $(uname -r)
- ```
+	 ```
+	 # 安装
+	./NVIDIA-Linux-x86_64-450.80.02.run --kernel-source-path=/usr/src/kernels/3.10.0-1160.6.1.el7.x86_64  -k $(uname -r)
+	 ```
  
  4. 安装验证
- ```
- # 查看GPU相关配置
-[root@localhost ~]# nvidia-smi
-# 如果正常显示安装的显卡信息，则说明驱动安装成功； 
-# 如果提示找不到该指令，或什么信息都没有显示，则驱动安装失败，可以卸载驱动后重新安装
+	 ```
+	 # 查看GPU相关配置
+	[root@localhost ~]# nvidia-smi
+	# 如果正常显示安装的显卡信息，则说明驱动安装成功； 
+	# 如果提示找不到该指令，或什么信息都没有显示，则驱动安装失败，可以卸载驱动后重新安装
 
-[root@localhost ~]# nvidia-smi
-Tue Mar 15 16:17:51 2022
+	[root@localhost ~]# nvidia-smi
+	Tue Mar 15 16:17:51 2022
 
- ```
+	 ```
  ![enter description here](./images/1647332866859.png)
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
