@@ -112,10 +112,8 @@ import paho.mqtt.client as mqtt
 
 msg_global = ""
 
-
 def on_connect(client: mqtt.Client, userdata, flags, rc):
     print("Connected with result code: " + str(rc))
-
 
 def on_message(client, userdata, msg: mqtt.MQTTMessage):
     global msg_global
