@@ -32,7 +32,7 @@ D:\emqx\erts-11.0\bin\erlsrv.exe: Service emqx_4.3.5 added to system.
 D:\emqx\bin>emqx start
 ```
 # CentOS平台安装
-同上，进入下载页面，鼠标点击`CentOS`图标<i class="fab fa-centos fa-border"></i>，选择与安装平台对应的操作系统的版本号以及安装包的打包方式，本实例使用的是`CentOS 7` 64位的`amd`芯片结构的`zip`安装`emqx-centos7-4.3.5-amd64.zip`
+同上，进入下载页面，鼠标点击`CentOS`图标<i class="fab fa-centos fa-border"></i>，选择与安装平台对应的操作系统的版本号以及安装包的打包方式，本实例使用的是`CentOS 7` 64位的`amd`芯片结构的`zip`安装`emqx-centos7-4.3.5-amd64.zip`，[下载链接](https://github.com/emqx/emqx/releases/download/v4.3.5/emqx-centos7-4.3.5-amd64.zip)
 
 ```
 # 解压文件到安装目录，本示例使用的是/usr/local/,此目录可自行指定
