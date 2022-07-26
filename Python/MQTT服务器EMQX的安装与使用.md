@@ -60,10 +60,8 @@ import time
 
 import paho.mqtt.client as mqtt
 
-
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code: " + str(rc))
-
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
@@ -87,11 +85,9 @@ while True:
 def on_connect(client: mqtt.Client, userdata, flags, rc):
     print("Connected with result code: " + str(rc))
 
-
 def on_message(client, userdata, msg: mqtt.MQTTMessage):
     global msg_global
     msg_global = str(msg.payload, encoding='utf-8')
-
 
 mqtt_server="127.0.0.1"
 client = mqtt.Client()
