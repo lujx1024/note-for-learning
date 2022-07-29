@@ -35,7 +35,7 @@ pip install cmake
 pip install dlib
 ```
 ## 使用whl安装旧版本
-`pypi`[官方网站](`https://pypi.org/simple/dlib/`)提供了已经编译好的whl文件提供下载，截止到本文档编写之日(20211110),列举出了适配python 3.6版本及以下以及python 2.x版本的二进制安装包文件 (最新版本的只有源码，没有二进制安装包)。如下图所示
+`pypi`[官方网站](https://pypi.org/simple/dlib/)提供了已经编译好的whl文件提供下载，截止到本文档编写之日(20211110),列举出了适配python 3.6版本及以下以及python 2.x版本的二进制安装包文件 (最新版本的只有源码，没有二进制安装包)。如下图所示
 ![dlib的pypi官方库](./images/1659064388408.png)
 
 至此，可通过以下方式安装对应的whl文件：
