@@ -40,7 +40,7 @@ pip install dlib
 
 至此，可通过以下方式安装对应的whl文件：
 
-1. 下载`whl`文件，以`dlib19.8.1`为例，`pip install dliv-19.8.1-cp36-cp36m-win_amd64.whl` 即可完成安装 ;
+1. 下载`whl`文件，以`dlib19.8.1`为例，`pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl` 即可完成安装 ;
 2. 通过右击鼠标获取对应包文件的链接，同样以`dlib19.8.1`为例，`pip install [文件链接]`，链接太长且不确定是否会变化，就不放在这儿了;
 3. 直接指定安装`whl`文件的对应版本号，如`pip install dlib==19.8.1`
 
