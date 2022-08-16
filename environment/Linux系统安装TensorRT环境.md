@@ -7,7 +7,6 @@ grammar_cjkRuby: true
 
 # 概述
 
-
 `NVIDIA` `TensorRT`的核心是一个`c++`库，用于在`NVIDIA`图形处理单元(`gpu`)上进行高性能模型推理。`TensorRT`将包括网络定义和一组经过训练的参数的神经网络转换为一个高度优化的运行时引擎，对该网络进行推理。
 
 `TensorRT`提供i可供`c++`和`Python`调用的`API`，这些高级语言接口可表达通过网络定义接口的深度学习模型，或通过解析器加载预定义的模型，允许`TensorRT`优化并在`NVIDIA ``GPU`上运行这些网络模型。`TensorRT`应用了`图优化`、`层融合`以及其他优化，同时还利用各种高度优化的内核找到了该模型的最快实现。`TensorRT`还提供了一个`runtime`，你可以使用它在`NVIDIA Kepler`(**NVIDIA的显卡架构**)之后的所有`GPU`上执行这个网络。
@@ -116,4 +115,6 @@ OK ! 准备工作已完成。
 # 参考链接
 - https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-tar
 - https://blog.csdn.net/irving512/article/details/107165757
+
+
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
