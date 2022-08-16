@@ -112,4 +112,8 @@ OK ! 准备工作已完成。
 	
 	
 至此，`CentOS`系统安装`TensorRT`环境，完成！
+
+# 参考链接
+- https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-tar
+- https://blog.csdn.net/irving512/article/details/107165757
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
