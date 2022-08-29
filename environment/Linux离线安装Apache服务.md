@@ -1,6 +1,6 @@
 ---
 title: Linux离线安装Apache HTTP服务
-tags: 新建,模板,小书匠
+tags: CentOS,apache,安装
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
