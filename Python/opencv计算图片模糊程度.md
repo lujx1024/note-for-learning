@@ -13,7 +13,7 @@ grammar_cjkRuby: true
 3. 在没有相同尺寸的对比图片的情况下，需要通过现有的数据设置一个阈值，以超过该阈值为标准判断图片清晰与否
 
 
-```bash
+```python
 import cv2
 
 # step 1. read the image via opencv
@@ -33,5 +33,6 @@ blur = cv2.Laplacian(gray, cv2.CV_64F).var()
 . . .
 
 ```
+
 
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
