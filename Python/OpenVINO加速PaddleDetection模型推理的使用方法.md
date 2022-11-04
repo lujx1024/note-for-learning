@@ -29,7 +29,7 @@ grammar_cjkRuby: true
 # 模型推理加速
 
 ## 工作流程
-使用OpenVINO进行PaddleDetection加速推理的工作流程如下：
+使用`OpenVINO`进行`PaddleDetection`加速推理的工作流程如下：
 
 ![workflow](./images/1667529022140.png)
 
@@ -42,9 +42,9 @@ grammar_cjkRuby: true
 
 ## OpenVINO环境部署
 软硬件依赖于环境如下：
-- 操作系统: Windows 10 x64
-- python: python3.7
-- CPU： Intel Core i5-12400F
+- 操作系统: `Windows 10 x64`
+- `python`版本: `python3.7`
+- `CPU`型号： `Intel Core i5-12400F`
 
 1. 创建虚拟环境
    ```
