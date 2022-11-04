@@ -12,6 +12,10 @@ grammar_cjkRuby: true
 	* [OpenVINO环境部署](#openvino环境部署)
 	* [OpenVINO推理示例(PaddlePaddle Inference)](#openvino推理示例paddlepaddle-inference)
 	* [OpenVINO推理示例(OpenVINO IR)](#openvino推理示例openvino-ir)
+	* [性能数据](#性能数据)
+* [附录](#附录)
+	* [查看模型的输入输出](#查看模型的输入输出)
+	* [参考链接](#参考链接)
 
 # 概述
 `OpenVINO`自`2022.1`版本更新以来，出现了以下重大变化：
@@ -198,4 +202,3 @@ Windows 平台的安装包下载链接：[github官方下载地址](https://gith
 - OpenVINO 安装：[链接](https://docs.openvino.ai/latest/openvino_docs_install_guides_overview.html)
 - PaddlePaddle模型转换： [链接](https://docs.openvino.ai/latest/openvino_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_Paddle.html)
 - OpenVINO推理API： [链接](https://docs.openvino.ai/latest/openvino_2_0_inference_pipeline.html)
-欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过 `小书匠主按钮>模板` 里的模板管理来改变新建文章的内容。
