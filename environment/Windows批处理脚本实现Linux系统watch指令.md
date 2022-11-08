@@ -1,13 +1,12 @@
 ---
 title: Windows批处理脚本实现Linux系统watch指令
-tags: 新建,模板,小书匠
+tags: Windows,watch,批处理
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
 
-
 脚本如下：
-```
+```bat
 @ECHO OFF
 :loop
   cls
@@ -18,7 +17,7 @@ goto loop
 使用方法：保存脚本至某位置，例如`d:\scripts\watch.bat`,添加父级目录到环境变量，即可使用命令行查看，示例如下:
 
 > 注: `linux`指令支持输入间隔时间,如`watch -n 1 nvidia-smi` 表示每个1秒执行一次，此处的间隔时间硬编码在脚本中，使用`/t`参数指定
-```
+```bat
 watch nvidia-smi 
 
 ## 输出如下:
