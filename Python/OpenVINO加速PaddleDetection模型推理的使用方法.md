@@ -125,12 +125,11 @@ grammar_cjkRuby: true
 ## OpenVINO推理示例(OpenVINO IR)
 同样，以` ppyolo_mbv3_large_voc`为例，模型导出后,共有包括配置文件在内的4个文件,如下所示:
    ```text
-   ppyolo_mbv3_large_voc_infer
+   ppyolo_mbv3_large_voc_IR
    |
-   |---infer_cfg.yml
-   |---inference.pdiparams
-   |---inference.pdiparams.info
-   |---inference.pdmodel
+   |---inference.bin
+   |---inference.mapping
+   |---inference.xml
    ```
 1. 模型格式转换
    ```
