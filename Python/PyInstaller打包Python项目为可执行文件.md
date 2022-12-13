@@ -1,11 +1,29 @@
 ---
-title: PyInstaller打包Python项目为可执行文件
+title: Python项目打包EXE
 tags: Python,EXE,PyInstaller
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
 
-[toc]
+[toc!?depth=3]
+
+* [概述](#概述)
+* [使用方法](#使用方法)
+	* [安装](#安装)
+	* [单文件打包](#单文件打包)
+	* [项目多文件打包](#项目多文件打包)
+		* [项目结构](#项目结构)
+		* [生成打包配置文件](#生成打包配置文件)
+		* [打包为EXE](#打包为exe)
+	* [TroubleShooting](#troubleshooting)
+		* [文件的路径问题](#文件的路径问题)
+		* [打包文件报错：](#打包文件报错)
+		* [更换图标报错：](#更换图标报错)
+		* [打包错误：](#打包错误)
+		* [运行exe文件报错：](#运行exe文件报错)
+		* [文件打包后过大](#文件打包后过大)
+* [参考链接](#参考链接)
+
 # 概述
 
 `PyInstaller`将`Python`应用程序及其所有依赖项打包到一个包中。用户可以在不安装`Python解释器`或任何模块的情况下运行打包的`EXE`应用程序。`PyInstaller`支持`Python 3.7`及以上版本，并成功支持了许多主流的第三方`Python`包，如`numpy`、`matplotlib`、`PyQt`、`wxPython`等。
