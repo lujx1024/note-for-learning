@@ -5,6 +5,11 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
 
+| 制定人 | 评审人 |
+| ------ | ------ |
+| 陆俊贤 |   孙非凡、涂纯、何华建     |
+
+
 * [Python 编码规范(Google)](#python-编码规范google)
 	* [分号](#分号)
 	* [行长度](#行长度)
