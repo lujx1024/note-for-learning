@@ -13,7 +13,6 @@ grammar_cjkRuby: true
 
 ![RabbitMQ and Erlang Version Compatibily](./images/1659529824846.png)
 
-
 # 环境部署
 ## Erlang依赖的安装
 [官方网站](http://www.erlang.org/downloads)下载对应平台的安装包，这里选择Windows 64位的安装包，如图所示:
