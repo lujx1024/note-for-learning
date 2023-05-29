@@ -53,7 +53,7 @@ Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 13.0.3
 登录首页：
 ![Index of RabbitMQ management](./images/1659530878741.png)
 
-### 前端消息订阅插件功能开启(stomp协议通道)
+### 前端消息订阅插件功能开启(stomp协议通道,15674端口)
 安装完成后找到安装目录，在此目录下打开`cmd`命令，输入`rabbitmq-plugins enable rabbitmq_web_stomp`命令启用管理页面的插件
 ![installation directory](./images/1659530624645.png)
 指令如下:
