@@ -4,7 +4,7 @@ tags:  Windows,TensorRT,安装
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
-
+[toc]
 # 概述
 
 `NVIDIA` `TensorRT`的核心是一个`c++`库，用于在`NVIDIA`图形处理单元(`gpu`)上进行高性能模型推理。`TensorRT`将包括网络定义和一组经过训练的参数的神经网络转换为一个高度优化的运行时引擎，对该网络进行推理。
@@ -39,9 +39,9 @@ OK ! 准备工作已完成。
 ## 安装配置
 
 ### 解压安装包，配置环境变量
-本示例中，下载的安装包文件名为`TensorRT-6.0.1.5.Windows10.x86_64.cuda-10.1.cudnn7.6.zip`,将安装包解压后放置于合适的安装目录，例如，`d:\TensorRT-6.0.1.5`,配置环境变量`PATH`,添加`TensorRT`的`bin`文件路径，`d:\TensorRT-6.0.1.5\bin`,如下图所示:
+本示例中，下载的安装包文件名为`TensorRT-6.0.1.5.Windows10.x86_64.cuda-10.1.cudnn7.6.zip`,将安装包解压后放置于合适的安装目录，例如，`d:\TensorRT-6.0.1.5`,配置环境变量`PATH`,添加`TensorRT`的`bin`文件路径，`d:\TensorRT-6.0.1.5\bin`,如下图所示(后续版本有改动，图片仅做示例):
 
-![系统环境变量](./images/1673266073280.png)
+![系统环境变量](./images/1685429037132.png)
 
 > 注 :  请确认与PATH同级的CUDA的环境变量，本实例中，分别为`CUDA_PATH`和`CUDA_PATH_V10.1`,上述两个环境变量在安装CUDA时一般会自动生成，如果没有自动生成，手动添加即可。可参考以下数据，将路径替换为实际路径即可: 
 > `CUDA_PATH` = `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1`
