@@ -29,16 +29,17 @@ sudo vim /etc/netplan/00-installer-config.yaml
 ```shell
 # This is the network config written by 'subiquity'
 network:
+  version: 2
+  renderer: networkd
   ethernets:
-    enp0s3: # 网卡名称
-      dhcp4: true
+  	enp0s3: # 网卡名称
+  		dhcp4: yes
     enp0s8: # 网卡名称
-      dhcp4: false
+      dhcp4: no
       addresses: [192.168.1.101/24] # 静态IP地址
         gateway4: 192.168.1.1
         nameservers:
           addresses: [192.168.1.1] # 网关地址
-    version: 2
 ```
 
 > 说明：`enp0s3`和`enp0s8`为网卡名称，根据实际情况修改。
@@ -66,7 +67,7 @@ sudo route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.1.1 dev enp0s3
 > 说明：上述指令为添加默认路由，指向互联网,网关地址是`192.168.1.1`,所有的数据包都通过`enp0s3`网卡发送出去。
 
 ## 3.删除路由
-    
+
 ```shell
 sudo route del -net 0.0.0.0 dev enp0s3
 ```
