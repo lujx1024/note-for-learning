@@ -91,7 +91,7 @@ cd build
 3. 创建虚拟环境
 
     ```bash
-    conda create -n opencv python=3.8 numpy -y
+    conda create -n opencv python=3.8.10 numpy -y
     ```
 
     > 注: 虚拟环境需要预装`numpy`，否则后续编译时会报错。
@@ -281,6 +281,8 @@ pkg-config --libs   opencv4
 
 # 第四阶段：测试OpenCV
 
+## C++测试
+
 1. 创建测试文件夹`testopencv`,并进入该文件夹
 
     ```bash
@@ -330,16 +332,64 @@ pkg-config --libs   opencv4
     ```
     > 注：确保build文件夹中存在`dog.jpg`文件
 
+## Python测试
+
+进入虚拟环境，执行指令：
+
+```bash
+(opencv) root@localhost:~/# python
+Python 3.8.17 (default, Jul  5 2023, 21:04:15)
+[GCC 11.2.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+>>> cv2.cuda.getCudaEnabledDeviceCount()
+1
+>>> quit()
+```
+
 # 报错与解决方案
 
-1. `imshow`报错
+1. 虚拟环境导入cv2模块报错
+   报错信息：
+    ```bash
+    [GCC 11.2.0] :: Anaconda, Inc. on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import cv2
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    File "/root/miniconda3/envs/opencv/lib/python3.8/site-packages/cv2/__init__.py", line 181, in <module>
+        bootstrap()
+    File "/root/miniconda3/envs/opencv/lib/python3.8/site-packages/cv2/__init__.py", line 153, in bootstrap
+        native_module = importlib.import_module("cv2")
+    File "/root/miniconda3/envs/opencv/lib/python3.8/importlib/__init__.py", line 127, in import_module
+        return _bootstrap._gcd_import(name[level:], package, level)
+    ImportError: /lib/x86_64-linux-gnu/libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0
+    >>> quit()
+    ```
+    
+    报错原因：
+    `libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0`，意思大概就是`libffi`的版本不一致，导致了`libp11-kit.so.0`在使用时出现了未定义符号问题。其实可以推到以后出现同类型问题，解决方法也应该基本类似。
+
+    解决方法：
+    修改软连接指向，进入到虚拟环境的lib目录下，将`libffi.so.7`删除或重命名，新建一个同名或修改指向`/lib/x86_64-linux-gnu/libffi.so.7.1.0`即可，指令：
+
+    ```bash
+    cd /root/miniconda3/envs/opencv/lib
+    ln -s /lib/x86_64-linux-gnu/libffi.so.7.1.0 libffi.so.7
+    ```
+
+
+    > 补充说明: 经过资料查询：原来是`Python 3.8.16`版本在安装过程中，就会默认安装`libffi-3.4.2`，在该库中，就会出现旧版本兼容老版本问题，即出现`libffi.so.7`链接至`libffi.so.8.1.0`，进而产生报错。而在`python3.8.10`中，默认安装`libffi-3.3`版本，在该版本内，`libffi.so.7`链接至`libffi.so.7.1.0`，就不会产生上述问题。因此，另一种解决方式即为安装`python 3.8.10`，同样能解决该问题。感谢[博客](https://blog.csdn.net/qq_38606680/article/details/129118491)作者的分享。
+
+
+2. `imshow`报错
 
     ```bash
     (testopencv:1): Gtk-WARNING **: 14:50:57.000: cannot open display: 
     ```
     > 解决方案：在`CMakeLists.txt`文件中添加`set(OpenCV_DIR /usr/local/share/OpenCV)`，并重新编译。
 
-2. cuDNN软连接失效
+3. cuDNN软连接失效
    由于配置CUDA和cuDNN过程中，直接复制cuDNN文件到CUDA安装目录会导致软连接失效，因此需要重新配置cuDNN，具体步骤如下：
 
    ```bash
@@ -375,3 +425,4 @@ pkg-config --libs   opencv4
 2. [CSDN](https://blog.csdn.net/u013454780/article/details/128357962)
 3. [CSDN](https://blog.csdn.net/ChunjieShan/article/details/125391238)
 4. [CSDN](https://blog.csdn.net/luoluonuoyasuolong/article/details/80409644)
+5. [CSDN](https://blog.csdn.net/qq_38606680/article/details/129118491)
