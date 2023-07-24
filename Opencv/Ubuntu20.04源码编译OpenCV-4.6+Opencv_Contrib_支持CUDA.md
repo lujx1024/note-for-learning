@@ -42,8 +42,10 @@ sudo apt-get install -y build-essential \
 libgtk2.0-dev libavcodec-dev libavformat-dev \
 libjpeg-dev libswscale-dev libtiff5-dev libpng-dev \
 libtiff-dev libv4l-dev libxvidcore-dev libx264-dev \
-libgtk-3-dev libblas-dev liblapack-dev gfortran python3-dev pkg-config
+libgtk-3-dev libblas-dev liblapack-dev gfortran python3-dev libgtk2.0-dev libavcodec-dev libjpeg-dev 
 ```
+
+> 注 ： 确保`libgtk2.0-dev`正确安装，否则编译完成后的测试阶段会报错，强烈建议单独执行一次`apt install -y libgtk2.0-dev`
 
 # 第三阶段：编译安装
 
@@ -99,7 +101,7 @@ cd build
 
     ```bash
     conda env list | grep opencv
-
+    
     # 输出如下：
     opencv          /root/miniconda3/envs/opencv
     ```
@@ -131,11 +133,11 @@ cd build
     PYTHON3_EXECUTABLE=/root/miniconda3/envs/opencv/bin/python3
     PYTHON3_INCLUDE_DIR=/root/miniconda3/envs/opencv/include/python3.8
     PYTHON3_LIBRARY=/root/miniconda3/envs/opencv/lib/libpython3.8.so
-
+   
     # 指定Python虚拟环境的numpy路径
     PYTHON3_NUMPY_INCLUDE_DIRS=/root/miniconda3/envs/opencv/lib/python3.8/site-packages/numpy/core/include/
     PYTHON3_PACKAGES_PATH=/root/miniconda3/envs/opencv/lib/python3.8/site-packages
-    ```
+   ```
 
 3. CUDA相关配置项
    CUDA安装路径如果在安装时候没有修改，可以不用修改这些配置项。
@@ -197,7 +199,7 @@ cd build
         -D CUDA_ARCH_BIN="6.0 6.1 7.0 7.5 8.6" \
         -D ENABLE_FAST_MATH=ON \
         -D OPENCV_GENERATE_PKGCONFIG=ON \
-
+    
         ## 这部分待测试
         -D WITH_FFMPEG=ON \
         -D WITH_EIGEN=ON \
@@ -208,7 +210,7 @@ cd build
         -D WITH_QT=ON \
         -D WITH_V4L=ON \
         -D WITH_GTK=ON \
-
+    
         ..
     ```
 
@@ -366,7 +368,7 @@ Type "help", "copyright", "credits" or "license" for more information.
     ImportError: /lib/x86_64-linux-gnu/libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0
     >>> quit()
     ```
-    
+   
     报错原因：
     `libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0`，意思大概就是`libffi`的版本不一致，导致了`libp11-kit.so.0`在使用时出现了未定义符号问题。其实可以推到以后出现同类型问题，解决方法也应该基本类似。
 
@@ -410,14 +412,14 @@ Type "help", "copyright", "credits" or "license" for more information.
     ln -sf libcudnn_adv_train.so.8 libcudnn_adv_train.so
     ln -sf libcudnn_ops_train.so.8.4.0 libcudnn_ops_train.so.8
     ln -sf libcudnn_ops_train.so.8 libcudnn_ops_train.so
-
+   
     # 下面是另一种方法
     tar -xzvf cudnn-11.4-linux-x64-v8.2.4.15.tgz
     sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
     sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
     sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
     sudo ldconfig
-    ```
+   ```
 
 # 参考资料
 

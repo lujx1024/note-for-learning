@@ -40,8 +40,10 @@ sudo apt-get install -y build-essential \
 libgtk2.0-dev libavcodec-dev libavformat-dev \
 libjpeg-dev libswscale-dev libtiff5-dev libpng-dev \
 libtiff-dev libv4l-dev libxvidcore-dev libx264-dev \
-libgtk-3-dev libblas-dev liblapack-dev gfortran python3-dev pkg-config
+libgtk-3-dev libblas-dev liblapack-dev gfortran python3-dev libgtk2.0-dev libavcodec-dev libjpeg-dev 
 ```
+
+> 注 ： 确保`libgtk2.0-dev`正确安装，否则编译完成后的测试阶段会报错，强烈建议单独执行一次`apt install -y libgtk2.0-dev`
 
 # 第三阶段：编译安装
 
@@ -260,14 +262,14 @@ pkg-config --libs   opencv4
     ln -sf libcudnn_adv_train.so.8 libcudnn_adv_train.so
     ln -sf libcudnn_ops_train.so.8.4.0 libcudnn_ops_train.so.8
     ln -sf libcudnn_ops_train.so.8 libcudnn_ops_train.so
-
+   
     # 下面是另一种方法
     tar -xzvf cudnn-11.4-linux-x64-v8.2.4.15.tgz
     sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
     sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
     sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
     sudo ldconfig
-    ```
+   ```
 
 # 参考资料
 
