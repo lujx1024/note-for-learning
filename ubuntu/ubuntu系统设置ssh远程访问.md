@@ -113,7 +113,7 @@
 ## 1. 生成密钥
 
 ```shell
- ssh-keygen -t rsa -C "
+ ssh-keygen -t rsa 
 ```
 
 ## 2. 查看密钥
@@ -138,5 +138,4 @@ scp ~/.ssh/id_rsa.pub root@ip:/root/.ssh/authorized_keys
 ```shell
  ssh root@
 ```
-
 
