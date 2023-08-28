@@ -23,7 +23,7 @@
 可通过官方链接下载YOLOv5的官方预训练模型，模型格式为`pt`.[下载链接](https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt)
 `YOLOv5`官方项目提供了`pt`格式模型转换为`ONNX`格式模型的脚本，[项目链接](https://github.com/ultralytics/yolov5)
 
-模型导出指令：
+**模型导出指令**：
 
 ```bash
 python export --weights yolov5s.pt --include onnx
@@ -90,26 +90,24 @@ blob = cv2.dnn.blobFromImage(image, scalefactor=1 / 255.0, size=(640,640), swapR
 
 1. 设置推理Backend和Target
 
-   
-
    ```python
-   model.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-   model.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+    model.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+    model.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
    ```
     模型加载完成后，需要设置推理时的设备，一般情况下，推理设备为`CPU`，设置方法如下：
-
+   
     ```python
     model.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
     model.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
     ```
-
+   
     当然，若此时环境中的`opencv-python`模块支持`GPU`推理，也可以设置为`GPU`推理，设置方法如下：
 
     ```python
     model.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
     model.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
     ```
-
+   
     > 注: 判断`opencv-python`模块是否支持`GPU`推理的方法如下：`cv2.cuda.getCudaEnabledDeviceCount()`,返回值大于0表示支持`GPU`推理，否则表示不支持。
 
 2. 设置模型输入数据

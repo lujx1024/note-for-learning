@@ -151,7 +151,7 @@ E:\python\python_src_env
 	pip install numpy==1.20.1
 	```
 
-	> ​	注: python虚拟环境的版本需要与宿主机安装的Python解释器版本相同，否则编译安装完成后会导致import失败.
+	> ​注: python虚拟环境的版本需要与宿主机安装的Python解释器版本相同，否则编译安装完成后会导致import失败.
 
 
 

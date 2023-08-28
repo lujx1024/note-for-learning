@@ -144,6 +144,6 @@ sudo systemctl status rc-local
 ```shell
 sudo reboot
 ```
+
 系统完成重启后，可查看路由表，发现冗余静态路由已被删除。
 
-```shell

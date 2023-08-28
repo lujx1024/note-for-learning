@@ -6,7 +6,7 @@
 
 # 问题记录
 
-## 1. `OSError: [WinError 1455]` 页面文件太小，无法完成操作
+## 1.`OSError: [WinError 1455]` 页面文件太小，无法完成操作
 
 **前置环境:**
 
@@ -316,3 +316,19 @@ cum_counts = np.cumsum(np.greater(counts, 0, dtype=np.int32))
 cum_counts = np.cumsum(np.greater(counts, 0))
 ```
 
+## 7. yolov5训练时报错`attributeerror: ‘FreeTypeFont‘ object has no attribute ‘getsize‘`
+
+
+报错原因是`Pillow`版本过高，`Pillow 10+`版本中`ImageFont`模块中的`getsize`方法被移除，因此需要降低`Pillow`版本
+
+**解决方法**
+
+```bash
+pip install Pillow==9.5 --force-reinstall
+```
+##  8.YOLOv5模型导出为engine时报错`onnx-＞trt F16:Subnormal FP16 value detected`
+
+
+官方回复此警告可忽略
+参考链接：[官方论坛](https://forums.developer.nvidia.com/t/subnormal-fp16-values-detected/220070)
+[CSDN](https://blog.csdn.net/Zhou_yongzhe/article/details/127289947)
