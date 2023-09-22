@@ -36,7 +36,7 @@ docker pull ultralytics/yolov5:v6.1
 2. 可访问本地文件容器启动命令
 
    ```bash
-   sudo docker run --ipc=host -it -v "$(pwd)"/datasets:/usr/src/datasets ultralytics/yolov5:v6.1
+   sudo docker run --ipc=host -it --gpus all -v "$(pwd)"/datasets:/usr/src/datasets --name yolov5 ultralytics/yolov5:v6.1
    ```
 
    > 注：上述命令启动了一个可访问本地文件的YOLOv5容器，其中`"$(pwd)"/datasets`为本地文件路径，`/usr/src/datasets`为容器内文件路径，两者可以不同，但是需要保证本地文件路径存在。
@@ -47,7 +47,7 @@ docker pull ultralytics/yolov5:v6.1
 
    ```bash
     sudo docker run --ipc=host -it --gpus all ultralytics/yolov5:v6.1
-    ```
+   ```
 
 ## 容器内部操作
 

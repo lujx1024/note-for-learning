@@ -30,7 +30,7 @@ sudo vim /etc/netplan/00-installer-config.yaml
 # This is the network config written by 'subiquity'
 network:
   version: 2
-  renderer: networkd
+  renderer:  NetworkManager
   ethernets:
   	enp0s3: # 网卡名称
   		dhcp4: yes
