@@ -76,6 +76,7 @@ class DetectionDataUtils(object):
         self.annotation_dir = annotation_dir
         self.yolo_annotation_dir = None
         self.classes = []
+        self.image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp', '.svg']
         self.logger = logging.getLogger(__name__)
 
     def show_data_status(self) -> None:
@@ -83,7 +84,8 @@ class DetectionDataUtils(object):
         查看数据集的状态，包括图片数量和标注文件数量
         :return: None
         """
-        image_files = list(self.image_dir.glob("*.png"))
+        image_files = [file for file in self.image_dir.glob('*') if file.suffix.lower() in self.image_extensions]
+
         label_files = list(self.annotation_dir.glob('*.xml'))
         self.logger.info(f'数据集共有{len(image_files)}张图片，{len(label_files)}个标注文件')
 
@@ -151,12 +153,18 @@ class DetectionDataUtils(object):
         annotation_files = list(self.annotation_dir.glob('*.xml'))
         for annotation_file in annotation_files:
             # find the image file corresponding to the annotation file
-            image_file = self.image_dir / (annotation_file.stem + '.jpg')
+            # image_file = self.image_dir / (annotation_file.stem + '.jpg')
+
+            # assume that there is only one image file corresponding to the annotation file
+            image_file = [self.image_dir / (annotation_file.stem + ext) for ext in self.image_extensions if
+                          (self.image_dir / (annotation_file.stem + ext)).exists()][0]
+
             if not image_file.exists():
                 self.logger.info(f'冗余标注文件<<{annotation_file.name}>>已删除')
                 annotation_file.unlink()
 
-        image_files = list(self.image_dir.glob('*.png'))
+        image_files = [file for file in self.image_dir.glob('*') if file.suffix.lower() in self.image_extensions]
+
         for image_file in image_files:
             # find the annotation file corresponding to the image file
             annotation_file = self.annotation_dir / (image_file.stem + '.xml')
@@ -330,8 +338,9 @@ class DetectionDataUtils(object):
         self.yolo_annotation_dir = dst_anno_dir
         # get all the annotation files
         annotation_files = list(self.annotation_dir.glob('*.xml'))
-        # get all the class names
-        self.extract_class_names()
+        if self.classes is None or len(self.classes) == 0:
+            self.logger.info("Start Extracting Class Names ...")
+            self.extract_class_names()
         # write all the class names into classes.txt
         with open(dst_anno_dir.parent / 'classes.txt', 'w+', encoding='utf-8') as fw:
             fw.write("\n".join(self.classes))
@@ -402,7 +411,7 @@ class DetectionDataUtils(object):
         test_image_dir.mkdir(parents=True, exist_ok=True)
         test_label_dir.mkdir(parents=True, exist_ok=True)
 
-        image_files = list(self.image_dir.glob('*.png'))
+        image_files = [file for file in self.image_dir.glob('*') if file.suffix.lower() in self.image_extensions]
         label_files = list(self.yolo_annotation_dir.glob('*.txt'))
 
         # shuffle the image files and label files while maintaining the correspondence between them
@@ -522,26 +531,11 @@ if __name__ == '__main__':
     # main()
 
     # 1. 设置图片目录和标注目录
-    image_dir = Path(r"K:\nightowls\nightowls_validation")
-    annotation_dir = Path(r"K:\nightowls\annotations_validation")
+    image_dir = Path(r"data/images")
+    annotation_dir = Path(r"data/annotations")
     # 2. 创建数据集工具类对象
     data_utils = DetectionDataUtils(image_dir, annotation_dir)
     # 查看数据集状态
     data_utils.show_data_status()
 
-    data_utils.extract_class_names()
-    data_utils.remove_objects(['ignore'])
-    data_utils.remove_blank_annotation_files()
-    data_utils.modify_out_of_image_annotations()
-    data_utils.correct_spelling_mistakes({'pedestrian': 'person','bicycledriver': 'person','motorbikedriver': 'person'})
-    data_utils.show_data_status()
-    # data_utils.remove_objects(['ignore'])
-    #
-    # data_utils.remove_redundant_files()
-    # # 查看数据集状态
-    # data_utils.show_data_status()
-    # data_utils.extract_class_names()
-    #
-    data_utils.convert_to_yolo_format()
-    # data_utils.split_dataset_train_val()
     exit(0)
